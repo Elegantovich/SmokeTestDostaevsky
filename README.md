@@ -4,7 +4,7 @@
 Smoke test веб сервиса доставки питания
 
 ### Tech
-Python 3.11, Selenium 4.13
+Python 3.11, Selenium 4.13, Pytest 7.4
 
 ### How to start a project:
 Тестирование производилось на браузере Google chrome. Для старта необходимо узнать версию браузера.
