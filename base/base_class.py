@@ -50,6 +50,6 @@ class Base:
         path = ("../screen/"
                 f"{(dt.utcnow() + add(hours=5)).strftime(self.FORMAT)}")
         self.driver.save_screenshot(f"./screen/{path}.png")
-    
+
     def move_to_item(self, item):
         ActionChains(self.driver).move_to_element(item).perform()

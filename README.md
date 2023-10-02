@@ -15,7 +15,7 @@ Clone and move to local repository:
 ```
 git clone https://github.com/Elegantovich/SmokeTestDostaevsky/
 ```
-Load and move in folder 'utilites' driver
+Load and move in folder 'data' chromedriver
 
 Update data/config.ini newest input data
 
