@@ -5,8 +5,10 @@ from pages.item_card import ItemCardPage
 from pages.products_menu import ProductsMenuPage
 from pages.cart import CartPage
 import configparser
+import allure
 
 
+@allure.description("Тестируем покупку продукта в Достаевском")
 def test_select_product(set_up):
     config = configparser.ConfigParser()
     config.read("data\\config.ini", encoding='utf-8')

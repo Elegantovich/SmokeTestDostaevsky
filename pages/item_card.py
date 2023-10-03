@@ -1,4 +1,6 @@
 from base.base_class import Base
+from utilites.logger import Logger
+import allure
 
 
 class ItemCardPage(Base):
@@ -48,9 +50,13 @@ class ItemCardPage(Base):
     # Methods
 
     def add_to_carts(self):
-        name = self.get_name_value()
-        price = self.get_price_value()
-        self.click_button_add()
-        self.click_cart()
-        self.assert_link("https://dostaevsky.ru/cart")
-        return {name: price}
+        with allure.step("Получение информации из карточки продукта"):
+            Logger.add_start_step(self.add_to_carts.__name__)
+            name = self.get_name_value()
+            price = self.get_price_value()
+            self.click_button_add()
+            self.click_cart()
+            self.assert_link("https://dostaevsky.ru/cart")
+            Logger.add_end_step(self.get_current_url(),
+                                self.add_to_carts.__name__)
+            return {name: price}

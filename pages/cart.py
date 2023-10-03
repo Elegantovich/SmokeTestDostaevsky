@@ -1,4 +1,6 @@
 from base.base_class import Base
+from utilites.logger import Logger
+import allure
 
 
 class CartPage(Base):
@@ -34,6 +36,10 @@ class CartPage(Base):
     # Methods
 
     def get_data_from_cart(self):
-        name = self.get_product_name_value()
-        price = self.get_price_value()
-        return {name: price}
+        with allure.step("Сверка в корзине"):
+            Logger.add_start_step(self.get_data_from_cart.__name__)
+            name = self.get_product_name_value()
+            price = self.get_price_value()
+            Logger.add_end_step(self.get_current_url(),
+                                self.get_data_from_cart.__name__)
+            return {name: price}

@@ -1,4 +1,6 @@
 from base.base_class import Base
+from utilites.logger import Logger
+import allure
 
 
 class ProductsMenuPage(Base):
@@ -25,6 +27,10 @@ class ProductsMenuPage(Base):
     # Methods
 
     def select_product(self, product):
-        self.move_to_item(self.get_product_item(product))
-        self.click_product_item(product)
-        self.assert_word(self.get_title(self.title), product)
+        with allure.step("Выбор продукта"):
+            Logger.add_start_step(self.select_product.__name__)
+            self.move_to_item(self.get_product_item(product))
+            self.click_product_item(product)
+            self.assert_word(self.get_title(self.title), product)
+            Logger.add_end_step(self.get_current_url(),
+                                self.select_product.__name__)
