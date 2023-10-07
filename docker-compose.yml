@@ -4,11 +4,12 @@ services:
 
   selenium:
     image: selenium/standalone-chrome
+    shm_size: 2gb
     ports:
     - 4444:4444
 
   autotest2master:
-    image: python:autotest
+    image: test:v1
     container_name: autotest
     environment:
       TZ: "Asia/Shanghai"

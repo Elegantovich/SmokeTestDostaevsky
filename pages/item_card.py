@@ -3,6 +3,7 @@ from utilites.logger import Logger
 import allure
 
 
+@allure.epic("Операции на странице карточки продукта")
 class ItemCardPage(Base):
 
     def __init__(self, driver) -> None:

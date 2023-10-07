@@ -3,6 +3,7 @@ from utilites.logger import Logger
 import allure
 
 
+@allure.epic("Операции в коризне")
 class CartPage(Base):
 
     def __init__(self, driver) -> None:

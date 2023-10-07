@@ -19,7 +19,7 @@ class Base:
         print(f"current url: {url}")
         return url
 
-    def get_object(self, xpath, timeout=60):
+    def get_object(self, xpath, timeout=30):
         return WebDriverWait(self.driver, timeout).until(
             EC.element_to_be_clickable((By.XPATH, xpath)))
 
