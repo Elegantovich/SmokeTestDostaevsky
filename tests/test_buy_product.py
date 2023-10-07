@@ -1,5 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from pages.main import MainPage
 from pages.item_card import ItemCardPage
 from pages.products_menu import ProductsMenuPage
@@ -13,8 +14,7 @@ def test_select_product(set_up):
     config = configparser.ConfigParser()
     config.read("data\\config.ini", encoding='utf-8')
     path_drive = config["Config"]["driver_path"]
-    driver = webdriver.Chrome(service=ChromeService(
-        executable_path=path_drive))
+    driver = webdriver.Remote(path_drive, DesiredCapabilities.CHROME)
     mp = MainPage(driver)
     mp.select_menu_item(config["Config"]["type_product"])
     pm = ProductsMenuPage(driver)

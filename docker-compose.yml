@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+
+  selenium:
+    image: selenium/standalone-chrome
+    ports:
+    - 4444:4444
+
+  autotest2master:
+    image: python:autotest
+    container_name: autotest
+    environment:
+      TZ: "Asia/Shanghai"
+    volumes:
+      - /home/autotest2-master/logs:/app/logs
+      - /home/jenkins/jenkins-compose/workspace/python_test/allure-results:/app/test_results
