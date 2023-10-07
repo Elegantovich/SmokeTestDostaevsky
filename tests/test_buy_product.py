@@ -6,6 +6,7 @@ from pages.cart import CartPage
 import configparser
 import allure
 
+
 @allure.epic("Тестовы епик")
 @allure.title("Тестовый заголовок")
 @allure.description("Тестируем покупку продукта в Достаевском")
