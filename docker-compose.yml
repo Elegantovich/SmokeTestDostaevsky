@@ -3,6 +3,7 @@ version: '3.4'
 services:
 
   selenium:
+    container_name: selenium
     image: selenium/standalone-chrome
     shm_size: 2gb
     ports:
@@ -16,3 +17,16 @@ services:
     volumes:
       - /home/autotest2-master/logs:/app/logs
       - /home/jenkins/jenkins-compose/workspace/python_test/allure-results:/app/test_results
+
+  jenkins-compose:
+    container_name: jenkins
+    image: jenkins/jenkins:lts
+    privileged: true
+    user: root
+    ports:
+      - "8081:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /usr/bin/docker:/usr/bin/docker
+      - /usr/lib64/libltdl.so.7:/usr/lib/x86_64-linux-gnu/libltdl.so.7
+      - /home/jenkins/jenkins-compose:/var/jenkins_home

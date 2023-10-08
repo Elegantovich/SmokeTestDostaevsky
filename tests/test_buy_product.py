@@ -1,4 +1,5 @@
 from selenium import webdriver
+# from selenium.webdriver.chrome.service import Service as ChromeService
 from pages.main import MainPage
 from pages.item_card import ItemCardPage
 from pages.products_menu import ProductsMenuPage
@@ -7,7 +8,6 @@ import configparser
 import allure
 
 
-@allure.epic("Тестовы епик")
 @allure.title("Тестовый заголовок")
 @allure.description("Тестируем покупку продукта в Достаевском")
 def test_select_product(set_up):
@@ -19,6 +19,8 @@ def test_select_product(set_up):
     options.add_argument('--disable-gpu')
     config.read("./data/config.ini", encoding='utf-8')
     path_drive = config["Config"]["driver_path"]
+    # driver = webdriver.Chrome(service=ChromeService(
+    #     executable_path=path_drive))
     driver = webdriver.Remote(command_executor=path_drive,
                               options=options)
     mp = MainPage(driver)

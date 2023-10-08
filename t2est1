@@ -1,0 +1,29 @@
+import os
+
+def decorator(func):
+
+    def wrapper(*args, **kwargs):
+        print(*args)
+        print(func)
+        print(**kwargs)
+        print(f'перед функцией {func.__name__}')
+        func(*args, **kwargs)
+        print('после функции')
+    return wrapper
+
+
+class Car():
+    def __init__(self, color):
+        self.color = color
+
+    @decorator
+    def get_color(self):
+        test_name = os.environ.get('PYTEST_CURRENT_TEST')
+        print(test_name)
+        print(f"color - {self.color}")
+
+
+car = Car("red")
+
+
+print(car.get_color())
